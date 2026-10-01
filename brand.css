@@ -94,17 +94,17 @@
 
 .get p { margin: 0; }
 
-/* A screenshot comes in a light and a dark capture; the one matching the
+/* An image that comes in a light and a dark version; the one matching the
    theme in force is shown. */
-.shot-dark { display: none; }
+.on-dark { display: none; }
 
 @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .shot-light { display: none; }
-    :root:not([data-theme="light"]) .shot-dark  { display: block; }
+    :root:not([data-theme="light"]) .on-light { display: none; }
+    :root:not([data-theme="light"]) .on-dark  { display: block; }
 }
 
-[data-theme="dark"] .shot-light { display: none; }
-[data-theme="dark"] .shot-dark  { display: block; }
+[data-theme="dark"] .on-light { display: none; }
+[data-theme="dark"] .on-dark  { display: block; }
 
 /* The convert, review, use path on the front page. */
 .grid.pipeline {
@@ -276,4 +276,19 @@
     :root:not([data-theme="light"]) .hero-duckling .hero-note {
         color: #e6dcc0;
     }
+}
+
+.made-by {
+    margin: 1.5rem 0 1rem;
+    text-align: center;
+}
+
+.made-by a {
+    display: inline-block;
+    line-height: 0;
+}
+
+.made-by img {
+    height: 31px;
+    width: auto;
 }
