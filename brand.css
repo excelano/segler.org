@@ -292,3 +292,17 @@
     height: 31px;
     width: auto;
 }
+
+/* The sailboat roundel is the nav's home link. */
+nav a.nav-home {
+    display: flex;
+    align-items: center;
+    padding: 0.4rem 0.875rem 0.4rem 0;
+    line-height: 0;
+}
+
+nav a.nav-home img {
+    display: block;
+    width: 32px;
+    height: 32px;
+}
