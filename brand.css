@@ -228,7 +228,7 @@
 /* Duckling's band takes the duck's yellow, so the two products read as
    different at a glance. Dark type on the light band; cream on the dark one. */
 .hero-duckling {
-    background: linear-gradient(180deg, #f5c542 0%, #e6a919 100%);
+    background: linear-gradient(180deg, #faeaba 0%, #f2d27a 100%);
     color: #2f3337;
 }
 
