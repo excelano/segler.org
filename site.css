@@ -273,3 +273,11 @@ nav ul li {
         padding-left: 0;
     }
 }
+
+article > footer {
+    margin-top: 2rem;
+}
+
+article table {
+    width: 100%;
+}
