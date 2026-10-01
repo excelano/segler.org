@@ -224,3 +224,56 @@
     border-radius: var(--radius);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
+
+/* Duckling's band takes the duck's yellow, so the two products read as
+   different at a glance. Dark type on the light band; cream on the dark one. */
+.hero-duckling {
+    background: linear-gradient(180deg, #f5c542 0%, #e6a919 100%);
+    color: #2f3337;
+}
+
+.hero-duckling h1,
+.hero-duckling .hero-subtitle {
+    color: #2f3337;
+}
+
+.hero-duckling .hero-lede,
+.hero-duckling .hero-note {
+    color: #3d3a2c;
+}
+
+.hero-duckling a:not(.hero-cta a) {
+    color: #2f3337;
+}
+
+[data-theme="dark"] .hero-duckling {
+    background: linear-gradient(180deg, #7a5a12 0%, #54400d 100%);
+}
+
+[data-theme="dark"] .hero-duckling h1,
+[data-theme="dark"] .hero-duckling .hero-subtitle,
+[data-theme="dark"] .hero-duckling a:not(.hero-cta a) {
+    color: #f2eee4;
+}
+
+[data-theme="dark"] .hero-duckling .hero-lede,
+[data-theme="dark"] .hero-duckling .hero-note {
+    color: #e6dcc0;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .hero-duckling {
+        background: linear-gradient(180deg, #7a5a12 0%, #54400d 100%);
+    }
+
+    :root:not([data-theme="light"]) .hero-duckling h1,
+    :root:not([data-theme="light"]) .hero-duckling .hero-subtitle,
+    :root:not([data-theme="light"]) .hero-duckling a:not(.hero-cta a) {
+        color: #f2eee4;
+    }
+
+    :root:not([data-theme="light"]) .hero-duckling .hero-lede,
+    :root:not([data-theme="light"]) .hero-duckling .hero-note {
+        color: #e6dcc0;
+    }
+}
