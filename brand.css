@@ -293,7 +293,7 @@
     width: auto;
 }
 
-/* The sailboat roundel is the nav's home link. */
+/* The bare sailboat is the nav's home link. */
 nav a.nav-home {
     display: flex;
     align-items: center;
@@ -303,6 +303,6 @@ nav a.nav-home {
 
 nav a.nav-home img {
     display: block;
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: auto;
 }

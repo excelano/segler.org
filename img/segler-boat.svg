@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="9 7 46 48" width="46" height="48">
+  <!--
+    Author: David M. Anderson
+    Built with AI assistance (Claude, Anthropic)
+
+    The Segler sailboat without its roundel, for the nav's home button. The nav
+    is dark in both themes, so the hull is sand rather than the icon's near-black.
+  -->
+  <path d="M31 9 L31 42 L51 42 Q45 24 31 9 z" fill="#f2eee4"/>
+  <path d="M27 19 L27 42 L14 42 Q16 30 27 19 z" fill="#cbd7ea"/>
+  <path d="M11 46 h42 l-5 7 h-32 z" fill="#cfc094"/>
+</svg>
