@@ -306,3 +306,24 @@ nav a.nav-home img {
     width: 30px;
     height: auto;
 }
+
+/* A nav item keeps its size; when the row is too narrow it scrolls rather than
+   squeezing the home button to nothing. */
+nav ul li {
+    flex: none;
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        padding: 0 0.5rem;
+    }
+
+    nav ul li a[href] {
+        padding-left: 0.35rem;
+        padding-right: 0.35rem;
+    }
+
+    nav a.nav-home {
+        padding-left: 0;
+    }
+}
