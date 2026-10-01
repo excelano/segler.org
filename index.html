@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!-- Author: David M. Anderson -->
+<!-- Built with AI assistance (Claude, Anthropic) -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segler — a DocLang viewer and editor</title>
+    <meta name="description" content="Segler is a free, open-source desktop viewer and editor for DocLang documents, the markup format models read and write. Open a document, read it as a reader would, correct what the converter misread, and save with nothing else changed. Pairs with Duckling, which converts to DocLang.">
+    <link rel="canonical" href="https://segler.org/">
+    <link rel="icon" href="/img/segler-icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Segler">
+    <meta property="og:title" content="Segler — a DocLang viewer and editor">
+    <meta property="og:description" content="Segler is a free, open-source desktop viewer and editor for DocLang documents, the markup format models read and write. Open a document, read it as a reader would, correct what the converter misread, and save with nothing else changed. Pairs with Duckling, which converts to DocLang.">
+    <meta property="og:url" content="https://segler.org/">
+    <link rel="stylesheet" href="/axe/default.css">
+    <link rel="stylesheet" href="/brand.css"><!-- site brand override; cascades over default.css -->
+    <link rel="stylesheet" href="/axe/axe.css">
+    <script src="/axe/theme.js"></script>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="/">Segler</a></li>
+        <li><a href="/duckling/">Duckling</a></li>
+        <li><a href="/doclang/">DocLang</a></li>
+        <li><a href="/ecosystem/">Ecosystem</a></li>
+        <li><a href="https://github.com/excelano/segler" rel="noopener">GitHub</a></li>
+        <li class="nav-right"><button class="theme-toggle" aria-label="Toggle theme"></button></li>
+    </ul>
+</nav>
+
+<main>
+<article>
+
+    <header>
+        <div class="title-row">
+            <img src="/img/segler-icon.svg" alt="" aria-hidden="true" width="64" height="64">
+            <h1>Segler</h1>
+        </div>
+        <p class="lede">A viewer and editor for DocLang documents.</p>
+    </header>
+
+    <aside class="get">
+        <p>Segler is free and open source for macOS, Windows and Linux. <a href="#install">Get it</a>, or <a href="/duckling/">get Duckling</a> first if you have a PDF or Word file and no DocLang yet.</p>
+    </aside>
+
+    <section id="what">
+        <h2>Models write documents now. Somebody has to read them.</h2>
+
+        <p><a href="/doclang/">DocLang</a> is the open markup format for documents that language models read and write: the structure, the text, the layout of every element on the page, and the reading order, in one file. Converters such as <a href="https://docling.ai" rel="noopener">Docling</a> produce it from PDFs, scans and Office files, and a converter makes the mistakes a fast reader makes. A line is misread, a heading is taken for a paragraph, a table cell lands in the wrong column, a caption hangs on the wrong picture.</p>
+
+        <p>Those mistakes are quick to spot when the document is in front of you and slow to fix in raw XML. Segler shows a DocLang document the way a reader would see it, with the element tree beside it and the page scan a click away, and lets you correct it where you read it.</p>
+
+        <figure>
+            <img class="shot-light" src="/img/segler-light.png" alt="Segler showing a DocLang document as a reader would see it: the element tree on the left, the document in the middle with headings, paragraphs and a table, and the selected element's properties on the right." width="1000" height="672">
+            <img class="shot-dark" src="/img/segler-dark.png" alt="The same Segler window in the dark theme." width="1000" height="672">
+            <figcaption>A document open: the tree, the document as a reader sees it, and the selected element&rsquo;s properties.</figcaption>
+        </figure>
+    </section>
+
+    <section id="path">
+        <h2>Convert, review, use</h2>
+
+        <p>Segler is one stop on a path that the DocLang ecosystem already lays out, and the other stops are better known than this one.</p>
+
+        <div class="grid pipeline">
+            <a href="/duckling/">
+                <h3>Convert</h3>
+                <p>Duckling turns Word, Excel, PowerPoint, PDF, HTML, EPUB and some forty other formats into DocLang on your own machine. Docling and docling.rs do the same from code.</p>
+            </a>
+            <a href="#what-you-can-do">
+                <h3>Review and correct</h3>
+                <p>Segler opens the result, shows it beside the page it was read from, and saves your corrections without disturbing what you did not touch.</p>
+            </a>
+            <a href="/ecosystem/">
+                <h3>Use</h3>
+                <p>Feed the corrected document to a retrieval pipeline, a training set, or a labeling project. The ecosystem page maps the tools that read DocLang.</p>
+            </a>
+        </div>
+    </section>
+
+    <section id="what-you-can-do">
+        <h2>What it does</h2>
+
+        <p>Segler renders headings, running text, lists, tables and pictures in reading order, and edits them in place: retype a line, change a heading&rsquo;s level, turn a table cell from body into header, fix or clear a bounding box, change an element&rsquo;s label or layer, remove an element that should not be there. Every edit can be undone. Where a line carries bold or italic, its tags appear in the field so a correction keeps them.</p>
+
+        <p>When a <code>.dclx</code> archive carries the page images the model read, they open beside the document with the located boxes drawn over them, so a doubtful line can be checked against the scan. Segler validates the document against the DocLang specification as you work and lists what it finds, each finding a click from the element that carries it.</p>
+
+        <p>A save writes the file you opened with your edits applied and nothing else changed. Markup you did not touch comes back byte for byte, comments and whitespace included, and a document you did not change is not rewritten at all. That is the difference between an editor&rsquo;s model and a converter&rsquo;s, and it is why Segler is a library as well as an application: <code>segler-core</code> parses and serializes DocLang without losing any element, attribute or text run, and anyone can build on it.</p>
+
+        <p>It does not convert. Producing DocLang from a PDF is a converter&rsquo;s job, which is what <a href="/duckling/">Duckling</a> and <a href="/ecosystem/#docling">Docling</a> are for. And it makes no network connection of any kind: no account, no telemetry, no analytics, nothing about you or your documents sent anywhere.</p>
+
+        <p>The window is available in English and German. Element names and the attribute values you choose from lists stay in English in both, because a translated one would be a different document.</p>
+    </section>
+
+    <section id="install">
+        <h2>Get Segler</h2>
+
+        <p><strong>macOS</strong> from the <a href="https://apps.apple.com/us/app/id6808761705" rel="noopener">Mac App Store</a>. <strong>Windows</strong> from the <a href="https://apps.microsoft.com/detail/9P2C2QWHSDJL" rel="noopener">Microsoft Store</a>. <strong>Debian and Ubuntu</strong> (amd64 and arm64) from the Excelano apt repository, which also installs the desktop integration that opens a <code>.dclx</code> or <code>.dclg</code> on a double-click:</p>
+
+<pre><code>curl -fsSL https://excelano.com/apt/setup.sh | sudo sh &amp;&amp; sudo apt install segler</code></pre>
+
+        <p>On any platform with a Rust toolchain, <code>cargo install segler-desktop</code> builds the application and <code>cargo install segler</code> the command-line tool alone. <code>segler inspect FILE</code> reports what a document or archive contains. Nothing in the dependency tree compiles C.</p>
+
+        <p>Nothing to open yet? <a href="https://github.com/excelano/segler/releases/latest/download/sailing-directions.dclx" rel="noopener">Sailing directions for the western approaches</a> is a two-page archive written for the purpose, with a heading hierarchy, a table, lists, a picture and the two page images it was read from.</p>
+    </section>
+
+    <section id="open">
+        <h2>Open source, and the specification is the authority</h2>
+
+        <p>Segler is licensed Apache-2.0, the same as DocLang, so that any part of it can go where the format lives. The format is defined in <a href="https://github.com/doclang-project/doclang" rel="noopener">doclang-project/doclang</a>. Segler implements it and does not restate it; where Segler and the specification disagree, the specification is right and Segler has a bug. The code is at <a href="https://github.com/excelano/segler" rel="noopener">github.com/excelano/segler</a>.</p>
+
+        <p>The name is German for sailor.</p>
+    </section>
+
+    <footer>
+        <p><small>Segler and Duckling are <a href="https://excelano.com" rel="noopener">Excelano</a> applications. DocLang, Docling, docling.rs, Label Studio and the other projects named here belong to their own maintainers, and a link is a pointer, not an endorsement in either direction. This site is open to pull requests at <a href="https://github.com/excelano/segler.org" rel="noopener">github.com/excelano/segler.org</a>.</small></p>
+    </footer>
+
+</article>
+</main>
+
+</body>
+</html>

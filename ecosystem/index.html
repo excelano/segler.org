@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!-- Author: David M. Anderson -->
+<!-- Built with AI assistance (Claude, Anthropic) -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The DocLang ecosystem — Docling, docling.rs, viewers, Label Studio</title>
+    <meta name="description" content="A map of the tools around DocLang: Docling and docling.rs for conversion, the DocLang viewer, Label Studio for labeling at scale, and Duckling and Segler on the desktop. Which to reach for, and when.">
+    <link rel="canonical" href="https://segler.org/ecosystem/">
+    <link rel="icon" href="/img/segler-icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Segler">
+    <meta property="og:title" content="The DocLang ecosystem — Docling, docling.rs, viewers, Label Studio">
+    <meta property="og:description" content="A map of the tools around DocLang: Docling and docling.rs for conversion, the DocLang viewer, Label Studio for labeling at scale, and Duckling and Segler on the desktop. Which to reach for, and when.">
+    <meta property="og:url" content="https://segler.org/ecosystem/">
+    <link rel="stylesheet" href="/axe/default.css">
+    <link rel="stylesheet" href="/brand.css"><!-- site brand override; cascades over default.css -->
+    <link rel="stylesheet" href="/axe/axe.css">
+    <script src="/axe/theme.js"></script>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="/">Segler</a></li>
+        <li><a href="/duckling/">Duckling</a></li>
+        <li><a href="/doclang/">DocLang</a></li>
+        <li><a href="/ecosystem/">Ecosystem</a></li>
+        <li><a href="https://github.com/excelano/segler" rel="noopener">GitHub</a></li>
+        <li class="nav-right"><button class="theme-toggle" aria-label="Toggle theme"></button></li>
+    </ul>
+</nav>
+
+<main>
+<article>
+
+    <header>
+        <h1>The DocLang ecosystem</h1>
+        <p class="lede">Converters, viewers, editors and labeling platforms, and which one to reach for.</p>
+    </header>
+
+    <section id="intro">
+        <p>DocLang is young, and the useful thing about a young open format is how many independent projects already speak it. This page is a map of them. Two are ours, Duckling and Segler. The rest are other people&rsquo;s work, and several of them are what Segler is built on or beside.</p>
+    </section>
+
+    <section id="docling">
+        <h2>Docling</h2>
+
+        <p><a href="https://docling.ai" rel="noopener">Docling</a> is the open-source document converter that started IBM Research&rsquo;s line of work and now lives under the LF AI &amp; Data Foundation, MIT licensed, at <a href="https://github.com/docling-project/docling" rel="noopener">docling-project/docling</a>. It reads PDFs, Office files, HTML, images and audio and keeps what makes a document a document: hierarchy, layout, reading order, tables, formulas and pictures, with the page number and bounding box of every element. It runs as a Python library, a command line, a containerized service, or a managed service from IBM. Docling treats DocLang as its unified output: convert once, then export to other formats without reprocessing the source.</p>
+    </section>
+
+    <section id="docling-rs">
+        <h2>docling.rs</h2>
+
+        <p><a href="https://github.com/docling-project/docling.rs" rel="noopener">docling.rs</a> is a Rust port of Docling in the same organization: one static binary with no Python or PyTorch at runtime. Its README reports the PDF pipeline running about four times faster than Python Docling at under half the memory, and declarative formats such as DOCX and HTML much faster still, with output checked against upstream format by format. It is published as the <code>docling</code> crate on crates.io, as <code>docling-rs</code> on PyPI, and on npm, and it ships a server and a command line. The whole converter also compiles to WebAssembly, so <a href="https://docling-project.github.io/docling.rs/" rel="noopener">a browser demo</a> converts a document entirely on your device.</p>
+
+        <p>It reads DocLang as well as writing it. Duckling is built on it. What it does not do is keep everything: its model is a flat list of nodes and its reader ignores elements and attributes it does not know, which is right for a converter and the reason Segler keeps its own lossless model for editing.</p>
+    </section>
+
+    <section id="viewer">
+        <h2>The DocLang viewer</h2>
+
+        <p>The project&rsquo;s own <a href="https://doclang.ai/viewer/" rel="noopener">viewer</a> runs in a browser, source at <a href="https://github.com/doclang-project/viewer" rel="noopener">doclang-project/viewer</a>. Drop a file on it and it shows the original page, the DocLang, or a reading view, with overlays you can switch on for layout elements, the body, furniture and background layers, reading order, table structure, cross-references, captions and key-value pairs. It is the quickest way to see what a document contains with nothing installed, and a good first stop for a file somebody sent you.</p>
+
+        <p>Segler sits next to it rather than in place of it. Segler is a desktop application for the document you are going to keep working on: it opens files from disk, makes no network connection, writes your corrections back with everything you did not touch preserved, and is a library you can build on.</p>
+    </section>
+
+    <section id="label-studio">
+        <h2>Label Studio</h2>
+
+        <p><a href="https://labelstud.io" rel="noopener">Label Studio</a> is HumanSignal&rsquo;s open-source platform for data labeling, AI evaluation and human-in-the-loop workflows, covering images, text, audio, time series and documents including PDF and OCR work, with templates, an SDK, webhooks and model-assisted labeling. HumanSignal is one of the five founding members of the DocLang working group.</p>
+
+        <p>Label Studio and Segler answer different scales of the same question. Label Studio is for a team labeling a corpus: projects, assignments, annotators, review queues, a pipeline around them. Segler is for one person with one document that needs to be right, who wants to open a file, fix it and save it, with no server and no account. If you are running a labeling program, you want Label Studio. If you have a file open and a wrong table cell in it, you want Segler.</p>
+    </section>
+
+    <section id="duckling-segler">
+        <h2>Duckling and Segler</h2>
+
+        <p><a href="/duckling/">Duckling</a> converts documents to DocLang from a desktop window, using docling.rs, with its models bundled so that nothing is downloaded and nothing leaves the machine. <a href="/">Segler</a> opens that DocLang and lets a person correct it beside the page it came from. Both are free, both are open source, and both are on the Mac App Store, the Microsoft Store and the Excelano apt repository.</p>
+    </section>
+
+    <section id="which">
+        <h2>Which to reach for</h2>
+
+        <table>
+            <thead>
+                <tr><th>You want to</th><th>Reach for</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Convert a few files with a window, offline</td><td><a href="/duckling/">Duckling</a></td></tr>
+                <tr><td>Convert from Python, or as a service</td><td><a href="https://docling.ai" rel="noopener">Docling</a></td></tr>
+                <tr><td>Convert from Rust, JavaScript or a single binary</td><td><a href="https://github.com/docling-project/docling.rs" rel="noopener">docling.rs</a></td></tr>
+                <tr><td>Look at a DocLang file with nothing installed</td><td><a href="https://doclang.ai/viewer/" rel="noopener">The DocLang viewer</a></td></tr>
+                <tr><td>Correct a DocLang file and save it</td><td><a href="/">Segler</a></td></tr>
+                <tr><td>Build on a lossless DocLang model in Rust</td><td><code>segler-core</code>, from <a href="https://crates.io/crates/segler-core" rel="noopener">crates.io</a></td></tr>
+                <tr><td>Run a labeling or evaluation program for a team</td><td><a href="https://labelstud.io" rel="noopener">Label Studio</a></td></tr>
+                <tr><td>Read the format itself</td><td><a href="https://github.com/doclang-project/doclang" rel="noopener">The specification</a></td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <p><small>Segler and Duckling are <a href="https://excelano.com" rel="noopener">Excelano</a> applications. DocLang, Docling, docling.rs, Label Studio and the other projects named here belong to their own maintainers, and a link is a pointer, not an endorsement in either direction. This site is open to pull requests at <a href="https://github.com/excelano/segler.org" rel="noopener">github.com/excelano/segler.org</a>.</small></p>
+    </footer>
+
+</article>
+</main>
+
+</body>
+</html>

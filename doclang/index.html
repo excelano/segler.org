@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- Author: David M. Anderson -->
+<!-- Built with AI assistance (Claude, Anthropic) -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocLang — the document format for models</title>
+    <meta name="description" content="What DocLang is, who governs it, what a .dclg and a .dclx file are, and the tools that read and write it, from Segler to Docling.">
+    <link rel="canonical" href="https://segler.org/doclang/">
+    <link rel="icon" href="/img/segler-icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Segler">
+    <meta property="og:title" content="DocLang — the document format for models">
+    <meta property="og:description" content="What DocLang is, who governs it, what a .dclg and a .dclx file are, and the tools that read and write it, from Segler to Docling.">
+    <meta property="og:url" content="https://segler.org/doclang/">
+    <link rel="stylesheet" href="/axe/default.css">
+    <link rel="stylesheet" href="/brand.css"><!-- site brand override; cascades over default.css -->
+    <link rel="stylesheet" href="/axe/axe.css">
+    <script src="/axe/theme.js"></script>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="/">Segler</a></li>
+        <li><a href="/duckling/">Duckling</a></li>
+        <li><a href="/doclang/">DocLang</a></li>
+        <li><a href="/ecosystem/">Ecosystem</a></li>
+        <li><a href="https://github.com/excelano/segler" rel="noopener">GitHub</a></li>
+        <li class="nav-right"><button class="theme-toggle" aria-label="Toggle theme"></button></li>
+    </ul>
+</nav>
+
+<main>
+<article>
+
+    <header>
+        <h1>DocLang</h1>
+        <p class="lede">An open document format that a language model can read and write.</p>
+    </header>
+
+    <section id="what">
+        <h2>What it is</h2>
+
+        <p>DocLang is an XML format for documents of any type, designed for the way a language model reads: a constrained vocabulary of about a thousand tokens, so that a model can emit it token for token. One file carries the structure of a document, its text, the layout of every element on the page, and the order a reader is meant to take them in. It is not a converter and not an API. The project&rsquo;s own comparison is to JSON for data and HTML for the web.</p>
+
+        <p>PDF and DOCX were built for print and for editing, and a model working from them has to guess what a human would see. DocLang records it. Tables are written in OTSL, a compact table language, element positions sit on a 512-point grid normalized against the page, and every semantic element splits into a head that describes it and a body that holds it.</p>
+    </section>
+
+    <section id="files">
+        <h2>The two file types</h2>
+
+        <p>A bare document is a <code>.dclg</code>: one XML file. A <code>.dclx</code> is an archive, an OPC zip holding <code>document.xml</code> together with optional page images under <code>pages/</code> and pictures under <code>assets/</code>. The archive is what makes review possible, because the scan the model read travels with the text it produced. <a href="/">Segler</a> opens both and <a href="/duckling/">Duckling</a> writes both.</p>
+    </section>
+
+    <section id="governance">
+        <h2>Who stands behind it</h2>
+
+        <p>DocLang is a project of the LF AI &amp; Data Foundation, developed under Joint Development Foundation Projects so that, in the project&rsquo;s words, no single vendor controls the roadmap. IBM, NVIDIA, Red Hat, ABBYY and HumanSignal founded the working group. The specification and a Python reference toolkit are in <a href="https://github.com/doclang-project/doclang" rel="noopener">doclang-project/doclang</a>, licensed Apache-2.0, and the project&rsquo;s home is <a href="https://doclang.ai" rel="noopener">doclang.ai</a>.</p>
+
+        <p>The specification is still at 0.x, and early minor versions have not promised compatibility with each other. A tool that reads DocLang should say which version it targets. Segler validates against the specification as published and treats it as the authority; where they disagree the bug is Segler&rsquo;s.</p>
+    </section>
+
+    <section id="tools">
+        <h2>Who reads and writes it</h2>
+
+        <p>Docling and ABBYY FineReader Engine write DocLang natively, according to doclang.ai, and docling.rs, the Rust port of Docling, writes and reads it too. The project publishes a browser viewer for looking at a document with its layout overlays, Duckling converts to it from a desktop window, and Segler is where a person corrects it. The <a href="/ecosystem/">ecosystem page</a> lays these out side by side and says which to reach for.</p>
+    </section>
+
+    <section id="why-edit">
+        <h2>Why it needs an editor</h2>
+
+        <p>A format built for models is mostly written by them, and the documents that matter most, scanned contracts, old reports, forms, are the ones a model is likeliest to misread. When the corrected text goes on to feed a search index or a training set, a wrong cell is a wrong fact downstream. The cheapest place to catch it is beside the page it came from, which is the one thing Segler is for.</p>
+    </section>
+
+    <footer>
+        <p><small>Segler and Duckling are <a href="https://excelano.com" rel="noopener">Excelano</a> applications. DocLang, Docling, docling.rs, Label Studio and the other projects named here belong to their own maintainers, and a link is a pointer, not an endorsement in either direction. This site is open to pull requests at <a href="https://github.com/excelano/segler.org" rel="noopener">github.com/excelano/segler.org</a>.</small></p>
+    </footer>
+
+</article>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+/*
+ * segler.org brand for Axe: the roundel and the sail.
+ *
+ * The palette is the Segler application icon's, as excelano.com/segler already
+ * carries it: roundel blue, sail cream, hull near-black. Blue carries links and
+ * the nav; the sand of the mainsail is the highlight role, a mark on a surface
+ * and never body text.
+ *
+ * This file layers after axe/default.css and mirrors all four theme contexts,
+ * because theme.js writes data-theme onto the root and a bare :root override
+ * would lose to default.css's higher-specificity [data-theme] blocks.
+ *
+ * Author: David M. Anderson
+ * Built with AI assistance (Claude, Anthropic)
+ */
+
+:root,
+[data-theme="light"] {
+    --color-bg:           #f6f3ec;
+    --color-surface:      #ffffff;
+    --color-text:         #1a2230;
+    --color-text-muted:   #596372;
+    --color-border:       #ddd8cb;
+    --color-accent:          #34507a;
+    --color-accent-hover:    #243a5c;
+    --color-highlight:       #b8a76a;
+    --color-highlight-hover: #7d6d40;
+    --color-nav-bg:       #34507a;
+    --color-nav-text:     #f2eee4;
+
+    --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --color-bg:           #0e1520;
+        --color-surface:      #16202d;
+        --color-text:         #e4e9f0;
+        --color-text-muted:   #94a2b3;
+        --color-border:       #26323f;
+        --color-accent:          #9db8e0;
+        --color-accent-hover:    #b9cdea;
+        --color-highlight:       #e6dcc0;
+        --color-highlight-hover: #f2eee4;
+        --color-nav-bg:       #121c2a;
+        --color-nav-text:     #ebebeb;
+    }
+}
+
+[data-theme="dark"] {
+    --color-bg:           #0e1520;
+    --color-surface:      #16202d;
+    --color-text:         #e4e9f0;
+    --color-text-muted:   #94a2b3;
+    --color-border:       #26323f;
+    --color-accent:          #9db8e0;
+    --color-accent-hover:    #b9cdea;
+    --color-highlight:       #e6dcc0;
+    --color-highlight-hover: #f2eee4;
+    --color-nav-bg:       #121c2a;
+    --color-nav-text:     #ebebeb;
+}
+
+/* The one-line statement under a title. */
+.lede {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    margin-top: -0.25rem;
+}
+
+.title-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.title-row img {
+    width: 64px;
+    height: 64px;
+    flex: none;
+}
+
+.title-row h1 { margin: 0; }
+
+/* Install and download links on a product page, set apart from running prose. */
+.get {
+    max-width: 860px;
+    margin: 0 auto 1rem;
+    padding: 0.9rem 1.25rem;
+    background: var(--color-surface);
+    border-left: 4px solid var(--color-highlight);
+    box-shadow: var(--shadow);
+}
+
+.get p { margin: 0; }
+
+/* A screenshot comes in a light and a dark capture; the one matching the
+   theme in force is shown. */
+.shot-dark { display: none; }
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .shot-light { display: none; }
+    :root:not([data-theme="light"]) .shot-dark  { display: block; }
+}
+
+[data-theme="dark"] .shot-light { display: none; }
+[data-theme="dark"] .shot-dark  { display: block; }
+
+/* The convert, review, use path on the front page. */
+.pipeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    counter-reset: step;
+}
+
+.pipeline > a {
+    counter-increment: step;
+}
+
+.pipeline > a::before {
+    content: counter(step);
+    display: inline-block;
+    width: 1.75rem;
+    height: 1.75rem;
+    line-height: 1.75rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: var(--color-bg);
+    font-weight: 600;
+    font-size: 0.9rem;
+}

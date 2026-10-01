@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- Author: David M. Anderson -->
+<!-- Built with AI assistance (Claude, Anthropic) -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duckling — convert documents to DocLang</title>
+    <meta name="description" content="Duckling is a free desktop application that converts Word, Excel, PowerPoint, PDF, HTML, EPUB and some forty other formats into DocLang, Markdown, JSON, LaTeX, ODT, ODS, ODP, DOCX or XLSX on your own machine, built on docling.rs.">
+    <link rel="canonical" href="https://segler.org/duckling/">
+    <link rel="icon" href="/img/segler-icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Segler">
+    <meta property="og:title" content="Duckling — convert documents to DocLang">
+    <meta property="og:description" content="Duckling is a free desktop application that converts Word, Excel, PowerPoint, PDF, HTML, EPUB and some forty other formats into DocLang, Markdown, JSON, LaTeX, ODT, ODS, ODP, DOCX or XLSX on your own machine, built on docling.rs.">
+    <meta property="og:url" content="https://segler.org/duckling/">
+    <link rel="stylesheet" href="/axe/default.css">
+    <link rel="stylesheet" href="/brand.css"><!-- site brand override; cascades over default.css -->
+    <link rel="stylesheet" href="/axe/axe.css">
+    <script src="/axe/theme.js"></script>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="/">Segler</a></li>
+        <li><a href="/duckling/">Duckling</a></li>
+        <li><a href="/doclang/">DocLang</a></li>
+        <li><a href="/ecosystem/">Ecosystem</a></li>
+        <li><a href="https://github.com/excelano/segler" rel="noopener">GitHub</a></li>
+        <li class="nav-right"><button class="theme-toggle" aria-label="Toggle theme"></button></li>
+    </ul>
+</nav>
+
+<main>
+<article>
+
+    <header>
+        <div class="title-row">
+            <img src="/img/duckling-icon.svg" alt="" aria-hidden="true" width="64" height="64">
+            <h1>Duckling</h1>
+        </div>
+        <p class="lede">Convert documents into DocLang, on your own machine.</p>
+    </header>
+
+    <aside class="get">
+        <p>Duckling is free and open source (MIT) for macOS, Windows and Linux. <a href="#install">Get it</a>, then open what it writes in <a href="/">Segler</a>.</p>
+    </aside>
+
+    <section id="what">
+        <h2>The front of the path</h2>
+
+        <p>DocLang is only useful once a document has been turned into it. Duckling is the window for that step. Drop in Word, PowerPoint, Excel, PDF, HTML, EPUB, RTF, OpenDocument, Apple iWork, email, Visio and some forty other formats, choose what to convert to and where to put it, and press Convert. A folder contributes every file under it that can be read, so a batch is one drop.</p>
+
+        <p>The output can be DocLang as a <code>.dclx</code> archive, Markdown, docling JSON, LaTeX, ODT, ODS, ODP, DOCX or XLSX. The DocLang archive carries a page image per page and the document&rsquo;s pictures, which is what lets <a href="/">Segler</a> show the scan beside the text it was read from. Bare DocLang gets its pictures in an <code>assets/</code> folder beside the file.</p>
+
+        <figure>
+            <img class="shot-light" src="/img/duckling-light.png" alt="The Duckling window after a batch: nine documents of different kinds, each written as DocLang beside its source, with the DocLang of the selected one previewed on the right." width="1000" height="636">
+            <img class="shot-dark" src="/img/duckling-dark.png" alt="The same Duckling window in the dark theme." width="1000" height="636">
+            <figcaption>A batch converted to DocLang, with the output of the selected file previewed.</figcaption>
+        </figure>
+    </section>
+
+    <section id="local">
+        <h2>Nothing leaves the machine</h2>
+
+        <p>Scanned PDFs and images are read by layout, OCR and table-structure models that ship inside the application, so there is nothing to download after installing, no account and no service to be down. Nothing is sent anywhere. Nothing is converted until Convert is pressed, so the format and destination chosen at that moment apply to the whole batch, and an existing file is never overwritten: a second <code>report.md</code> becomes <code>report (1).md</code>.</p>
+    </section>
+
+    <section id="engine">
+        <h2>The engine is docling.rs</h2>
+
+        <p>The converter is <a href="https://github.com/docling-project/docling.rs" rel="noopener">docling.rs</a>, the Rust port of IBM&rsquo;s <a href="https://docling.ai" rel="noopener">Docling</a>. Duckling is the window around it and adds no conversion logic of its own, so what Duckling writes is what docling.rs writes, and an improvement to the engine arrives as a new Duckling. The <a href="/ecosystem/#docling-rs">ecosystem page</a> says more about the engine and the other ways to run it, including a version that runs in a browser tab.</p>
+    </section>
+
+    <section id="install">
+        <h2>Get Duckling</h2>
+
+        <p><strong>macOS</strong> from the <a href="https://apps.apple.com/us/app/id6809102434" rel="noopener">Mac App Store</a>, on Apple silicon. <strong>Windows</strong> from the <a href="https://apps.microsoft.com/detail/9P4V2XZ0J2Z2" rel="noopener">Microsoft Store</a>. <strong>Debian and Ubuntu</strong> from the Excelano apt repository:</p>
+
+<pre><code>curl -fsSL https://excelano.com/apt/setup.sh | sudo sh &amp;&amp; sudo apt install duckling</code></pre>
+
+        <p>The source is at <a href="https://github.com/excelano/duckling" rel="noopener">github.com/excelano/duckling</a>. Duckling is not related to the other projects called Duckling, among them a web interface for Python Docling and Facebook&rsquo;s entity extractor; this one is the desktop converter above.</p>
+    </section>
+
+    <footer>
+        <p><small>Segler and Duckling are <a href="https://excelano.com" rel="noopener">Excelano</a> applications. DocLang, Docling, docling.rs, Label Studio and the other projects named here belong to their own maintainers, and a link is a pointer, not an endorsement in either direction. This site is open to pull requests at <a href="https://github.com/excelano/segler.org" rel="noopener">github.com/excelano/segler.org</a>.</small></p>
+    </footer>
+
+</article>
+</main>
+
+</body>
+</html>
