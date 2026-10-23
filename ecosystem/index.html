@@ -6,14 +6,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The DocLang ecosystem — Docling, docling.rs, viewers, Label Studio</title>
-    <meta name="description" content="A map of the tools around DocLang: Docling and docling.rs for conversion, the DocLang viewer, Label Studio for labeling at scale, and Duckling and Segler on the desktop. Which to reach for, and when.">
+    <meta name="description" content="A map of the tools around DocLang: Docling and docling.rs for conversion, the DocLang viewer, Label Studio for labeling at scale, Duckling and Segler on the desktop, and waddle for office documents. Which to reach for, and when.">
     <link rel="canonical" href="https://segler.org/ecosystem/">
     <link rel="icon" href="/img/segler-icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Segler">
     <meta property="og:title" content="The DocLang ecosystem — Docling, docling.rs, viewers, Label Studio">
-    <meta property="og:description" content="A map of the tools around DocLang: Docling and docling.rs for conversion, the DocLang viewer, Label Studio for labeling at scale, and Duckling and Segler on the desktop. Which to reach for, and when.">
+    <meta property="og:description" content="A map of the tools around DocLang: Docling and docling.rs for conversion, the DocLang viewer, Label Studio for labeling at scale, Duckling and Segler on the desktop, and waddle for office documents. Which to reach for, and when.">
     <meta property="og:url" content="https://segler.org/ecosystem/">
     <link rel="stylesheet" href="/axe/default.css">
     <link rel="stylesheet" href="/brand.css"><!-- site brand override; cascades over default.css -->
@@ -43,7 +43,7 @@
     </header>
 
     <section id="intro">
-        <p>DocLang is young, and the useful thing about a young open format is how many independent projects already speak it. This page is a map of them. Two are ours, Duckling and Segler. The rest are other people&rsquo;s work, and several of them are what Segler is built on or beside.</p>
+        <p>DocLang is young, and the useful thing about a young open format is how many independent projects already speak it. This page is a map of them. Three are ours: Duckling, Segler and waddle. The rest are other people&rsquo;s work, and several of them are what Segler is built on or beside.</p>
     </section>
 
     <section id="docling">
@@ -82,6 +82,14 @@
         <p><a href="/duckling/">Duckling</a> converts documents to DocLang from a desktop window, using docling.rs, with its models bundled so that nothing is downloaded and nothing leaves the machine. <a href="/">Segler</a> opens that DocLang and lets a person correct it beside the page it came from. Both are free, both are open source, and both are on the Mac App Store, the Microsoft Store and the Excelano apt repository.</p>
     </section>
 
+    <section id="waddle">
+        <h2>waddle</h2>
+
+        <p><a href="https://github.com/excelano/waddle" rel="noopener">waddle</a> goes the other way. docling.rs reads some forty formats and writes DocLang, Markdown, JSON and LaTeX, but no office format. waddle takes DocLang, a DocLang archive or docling JSON and writes an ODT or DOCX document, an ODS or XLSX workbook of the tables, or an ODP deck, offline and in pure Rust, without overwriting anything. Each element becomes the construct that format&rsquo;s own reader recognises, so the file reads back into the document it was written from, and waddle names whatever it could not carry.</p>
+
+        <p>It is a command line and a Rust library, <code>waddle-core</code>, and the library is how Duckling writes its office formats. Install it from the Excelano apt repository, Homebrew, winget or crates.io.</p>
+    </section>
+
     <section id="which">
         <h2>Which to reach for</h2>
 
@@ -96,6 +104,8 @@
                 <tr><td>Look at a DocLang file with nothing installed</td><td><a href="https://doclang.ai/viewer/" rel="noopener">The DocLang viewer</a></td></tr>
                 <tr><td>Correct a DocLang file and save it</td><td><a href="/">Segler</a></td></tr>
                 <tr><td>Build on a lossless DocLang model in Rust</td><td><code>segler-core</code>, from <a href="https://crates.io/crates/segler-core" rel="noopener">crates.io</a></td></tr>
+                <tr><td>Turn DocLang or docling JSON into a Word or LibreOffice document</td><td><a href="https://github.com/excelano/waddle" rel="noopener">waddle</a></td></tr>
+                <tr><td>Write office files from a docling document in Rust</td><td><code>waddle-core</code>, from <a href="https://crates.io/crates/waddle-core" rel="noopener">crates.io</a></td></tr>
                 <tr><td>Run a labeling or evaluation program for a team</td><td><a href="https://labelstud.io" rel="noopener">Label Studio</a></td></tr>
                 <tr><td>Read the format itself</td><td><a href="https://github.com/doclang-project/doclang" rel="noopener">The specification</a></td></tr>
             </tbody>
@@ -104,7 +114,7 @@
 
     <footer>
         <p class="made-by"><a href="https://excelano.com" rel="noopener"><img class="on-light" src="/img/excelano-logo.svg" alt="Excelano" width="140" height="31"><img class="on-dark" src="/img/excelano-logo-light.svg" alt="Excelano" width="140" height="31"></a></p>
-        <p><small>Segler and Duckling are <a href="https://excelano.com" rel="noopener">Excelano</a> applications. DocLang, Docling, docling.rs, Label Studio and the other projects named here belong to their own maintainers, and a link is a pointer, not an endorsement in either direction. This site is open to pull requests at <a href="https://github.com/excelano/segler.org" rel="noopener">github.com/excelano/segler.org</a> and, apart from the artwork and the vendored Axe, is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>.</small></p>
+        <p><small>Segler, Duckling and waddle are <a href="https://excelano.com" rel="noopener">Excelano</a> applications. DocLang, Docling, docling.rs, Label Studio and the other projects named here belong to their own maintainers, and a link is a pointer, not an endorsement in either direction. This site is open to pull requests at <a href="https://github.com/excelano/segler.org" rel="noopener">github.com/excelano/segler.org</a> and, apart from the artwork and the vendored Axe, is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>.</small></p>
     </footer>
 
 </article>
