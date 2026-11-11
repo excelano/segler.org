@@ -8,7 +8,7 @@ Everything here is dedicated to the public domain under [CC0 1.0](LICENSE). By c
 
 ## Claims about other projects
 
-The ecosystem page describes Docling, docling.rs, the DocLang viewer, Label Studio and DocLang itself. Each statement should be something the project's own site or repository says. If one is wrong or has gone stale, a pull request that fixes it and links the source is the most useful thing you can send. Segler and Duckling are Excelano's applications, and what the pages say about them is the applications' own behaviour: a claim that does not match what the application does is a bug in the page.
+The ecosystem page describes Docling, docling.rs, the DocLang viewer, Label Studio and DocLang itself. Each statement should be something the project's own site or repository says. If one is wrong or has gone stale, a pull request that fixes it and links the source is the most useful thing you can send. Segler and Duckling are Excelano's applications, and what the pages say about them is the applications' own behavior: a claim that does not match what the application does is a bug in the page.
 
 ## Two things that do not belong here
 
@@ -20,7 +20,7 @@ Prose, in paragraphs, in full sentences with a claim stated plainly rather than 
 
 Styling comes from the vendored [Axe](https://github.com/excelano/axe) framework, which styles standard HTML elements without classes. `brand.css` holds only the variables. The site's own rules go in `site.css`, which loads after `axe.css`, and a class belongs there only when Axe has no opinion about what you are building.
 
-Check both themes. The toggle in the navigation bar switches them, and a colour that only works in one is a bug. Check a narrow window as well.
+Check both themes. The toggle in the navigation bar switches them, and a color that only works in one is a bug. Check a narrow window as well.
 
 ## Before you open a pull request
 
