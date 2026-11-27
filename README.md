@@ -12,4 +12,4 @@ Pull requests are welcome, and [CONTRIBUTING.md](CONTRIBUTING.md) says what belo
 
 Everything here is dedicated to the public domain under [CC0 1.0](LICENSE).
 
-The exceptions are carried here as copies. `axe/` is from [excelano/axe](https://github.com/excelano/axe), MIT licensed. The Segler and Duckling icons and screenshots belong to [excelano/segler](https://github.com/excelano/segler) (Apache-2.0) and [excelano/duckling](https://github.com/excelano/duckling) (MIT). The Excelano logo is Excelano's mark. All © Excelano LLC.
+The exceptions are carried here as copies. `axe/` is from [excelano/axe](https://github.com/excelano/axe), MIT licensed. The Segler and Duckling icons and screenshots belong to [excelano/segler](https://github.com/excelano/segler) (Apache-2.0) and [excelano/duckling](https://github.com/excelano/duckling) (MIT). The Excelano logo is Excelano's mark. All © David M. Anderson.
